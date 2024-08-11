@@ -1,0 +1,197 @@
+.questions {
+    &__questionList {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+
+        row-gap: 24px;
+    }
+
+    &__question {
+        padding: 0 16px;
+        color: var(--black-100);
+        text-align: center;
+        font: 600 18px/21px 'Inter';
+    }
+
+    &__answers {
+        display: grid;
+        padding-bottom: 24px;
+
+        row-gap: 8px;
+    }
+
+    &__answer {
+        position: relative;
+        display: block;
+        padding: 0 17px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            left: 0;
+            display: block;
+            height: 1px;
+            background-color: var(--black-40);
+            transition: background-color 400ms;
+            transform: translateY(-50%);
+        }
+
+        &:focus,
+        &.state__selected {
+            &::before {
+                background-color: var(--orange-100);
+            }
+
+            .questions__answerContent {
+                border-color: var(--orange-100);
+            }
+        }
+
+        &.state__selected {
+            .questions__answerContent {
+                background-color: var(--orange-5);
+            }
+        }
+
+        &.state__pending {
+            &::before {
+                animation: pendingAnimation1 0.5s ease-in-out infinite alternate;
+            }
+
+            .questions__answerContent {
+                animation: pendingAnimation2 0.5s ease-in-out infinite alternate;
+            }
+        }
+
+        &.state__correct {
+            &::before {
+                background-color: var(--green-100);
+            }
+
+            .questions__answerContent {
+                border-color: var(--green-100);
+                background-color: var(--green-5);
+            }
+        }
+
+        &.state__wrong {
+            &::before {
+                background-color: var(--red-100);
+            }
+
+            .questions__answerContent {
+                border-color: var(--red-100);
+                background-color: var(--red-5);
+            }
+        }
+    }
+
+    &__answerContent {
+        position: relative;
+        display: flex;
+        height: 100%;
+        padding: 20px 24px;
+        border: 1px solid var(--black-40);
+        border-radius: 8px;
+        background-color: var(--white-100);
+        color: var(--black-100);
+        text-align: left;
+        font: 400 14px/16px 'Inter';
+        transition: border-color 400ms, background-color 400ms;
+        column-gap: 8px;
+    }
+
+    &__answerLetter {
+        color: var(--orange-100);
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+}
+
+@keyframes pendingAnimation1 {
+    from {
+        background-color: var(--orange-100);
+    }
+
+    to {
+        background-color: var(--black-40);
+    }
+}
+
+@keyframes pendingAnimation2 {
+    from {
+        border-color: var(--orange-100);
+        background-color: var(--orange-5);
+    }
+
+    to {
+        border-color: var(--black-40);
+        background-color: var(--white-100);
+    }
+}
+
+@media (min-width: 991px) {
+    .questions {
+        &__answer {
+            &:hover {
+                &::before {
+                    background-color: var(--orange-100);
+                }
+
+                .questions__answerContent {
+                    border-color: var(--orange-100);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .questions {
+        &__placeholder {
+            display: none;
+        }
+
+        &__questionList {
+            padding: 135px 40px 120px;
+        }
+
+        &__question {
+            padding: 0;
+            text-align: left;
+            font-size: 32px;
+            line-height: 37px;
+        }
+
+        &__answers {
+            max-width: 95%;
+            padding: 0;
+
+            grid-template-columns: repeat(2, minmax(100px, 1fr));
+            row-gap: 32px;
+        }
+
+        &__answerContent {
+            padding: 24px 32px;
+            font-size: 20px;
+            line-height: 23px;
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    .questions {
+        &__questionList {
+            padding-right: 80px;
+            padding-left: 80px;
+        }
+    }
+}

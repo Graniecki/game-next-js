@@ -1,0 +1,35 @@
+.button {
+    display: block;
+    padding: 16px 24px;
+    border-radius: 8px;
+    background-color: var(--orange-100);
+    color: var(--white-100);
+    text-align: center;
+    font: 600 14px/16px 'Inter';
+
+    &:active {
+        background-color: var(--orange-120);
+    }
+}
+
+@media (min-width: 991px) {
+    .button {
+        padding: 20px 24px;
+        font-size: 20px;
+        line-height: 23px;
+        transition: background-color 400ms;
+
+        &:hover {
+            background-color: var(--orange-80);
+        }
+
+        &:hover:active {
+            background-color: var(--orange-120);
+        }
+
+        &:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--black-100), 0 0 0 4px var(--black-100);
+        }
+    }
+}
