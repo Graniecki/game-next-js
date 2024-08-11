@@ -6,7 +6,7 @@ import './globals.scss';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Who wants to become a millionaire',
+  title: 'Who wants to become a millionaire?',
   description: 'Amazing description...',
 };
 
