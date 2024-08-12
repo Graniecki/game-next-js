@@ -24,7 +24,7 @@ function Results(): JSX.Element {
             </Suspense>
           </div>
           <div className={styles.home__button}>
-            <Button href="/game?new-attemtion" text="Try again" replace />
+            <Button href="/game" text="Try again" replace />
           </div>
         </div>
       </div>
